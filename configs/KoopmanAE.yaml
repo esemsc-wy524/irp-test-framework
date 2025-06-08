@@ -1,0 +1,36 @@
+# Koopman_AE.yaml
+
+# Lorenz 63
+lorenz63:
+  data_path: ./data/lorenz63/lorenz63data.npy
+  save_path: ./results/checkpoints/KoopmanAE_lorenz63.pt
+  train_ratio: 0.7
+  val_ratio: 0.3
+  batch_size: 64
+  learning_rate: 0.001
+  epochs: 1000
+  latent_dim: 32
+  lr_scheduler:
+    name: StepLR
+    step_size: 50
+    gamma: 0.97
+  optimizer:
+    name: Adam
+
+# Komologrov
+kolmogorov:
+  data_path: ./data/kolmogorov/RE1000/kf_2d_re1000_64_120seed.npy
+  save_path: ./results/checkpoints/KoopmanAE_kolmogorov.pt
+  train_ratio: 0.7
+  val_ratio: 0.3
+  batch_size: 64
+  learning_rate: 0.001
+  epochs: 500
+  latent_dim: 32
+  lr_scheduler:
+    name: StepLR
+    step_size: 50
+    gamma: 0.97
+  optimizer:
+    name: Adam
+
