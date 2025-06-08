@@ -8,3 +8,10 @@ data/lorenz63/
 .env.production.local
 
 __pycache__/
+
+results/predictions/
+
+results/loss/
+
+results/plots/
+
