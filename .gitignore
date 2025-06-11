@@ -1,5 +1,7 @@
 data/kolmogorov/
 data/lorenz63/
+data/1DHeatEq/
+data/2DAdvdiffEq/
 .DS_Store
 .env
 .env.local
@@ -9,9 +11,4 @@ data/lorenz63/
 
 __pycache__/
 
-results/predictions/
-
-results/loss/
-
-results/plots/
-
+results/

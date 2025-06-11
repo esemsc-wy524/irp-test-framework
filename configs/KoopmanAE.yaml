@@ -1,36 +1,48 @@
-# Koopman_AE.yaml
+# KoopmanAE.yaml
 
-# Lorenz 63
-lorenz63:
-  data_path: ./data/lorenz63/lorenz63data.npy
-  save_path: ./results/checkpoints/KoopmanAE_lorenz63.pt
-  train_ratio: 0.7
-  val_ratio: 0.3
-  batch_size: 64
-  learning_rate: 0.001
-  epochs: 1000
+# Dataset
+dataset: heat1d
+batch_size: 32
+input_steps: 10
+output_steps: 10
+normalize: true
+num_workers: 4
+stride: 1
+
+# Model
+model:
   latent_dim: 32
-  lr_scheduler:
-    name: StepLR
-    step_size: 50
-    gamma: 0.97
-  optimizer:
-    name: Adam
+  hidden_dims_encoder: [64, 128, 256]
+  hidden_dims_decoder: [256, 128, 64]
+  activation: relu
+  operator_type: linear
+  use_batch_norm: true
+  dropout: 0.1
 
-# Komologrov
-kolmogorov:
-  data_path: ./data/kolmogorov/RE1000/kf_2d_re1000_64_120seed.npy
-  save_path: ./results/checkpoints/KoopmanAE_kolmogorov.pt
-  train_ratio: 0.7
-  val_ratio: 0.3
-  batch_size: 64
-  learning_rate: 0.001
-  epochs: 500
-  latent_dim: 32
-  lr_scheduler:
-    name: StepLR
-    step_size: 50
-    gamma: 0.97
-  optimizer:
-    name: Adam
+# Loss
+loss:
+  recon_weight: 1.0
+  pred_weight: 1.0
+  physics_weight: 0.1
+  linearity_weight: 0.01
+  type: mse
+  time_decay: 0.9
 
+# Training
+n_epochs: 100
+learning_rate: 0.001
+gradient_clip: 1.0
+
+# Optimizer
+optimizer:
+  name: Adam  # Adam, AdamW, SGD
+
+# Learning rate scheduler
+lr_scheduler:
+  name: StepLR  # StepLR, CosineAnnealingLR, ReduceLROnPlateau
+  # For StepLR:
+  step_size: 50
+  gamma: 0.97
+
+# Physics parameters (dataset-specific)
+# These will be set automatically based on dataset
