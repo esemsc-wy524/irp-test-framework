@@ -10,4 +10,4 @@ cd $PBS_O_WORKDIR
 source ~/.bashrc
 conda activate irp-env
 
-python src/main.py --config configs/KoopmanAE.yaml --dataset heat1d --epochs 100 --debug --debug_samples 5000
+python src/main.py --config configs/KoopmanAE.yaml --dataset heat1d --epochs 100

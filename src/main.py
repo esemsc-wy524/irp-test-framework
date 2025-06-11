@@ -186,30 +186,6 @@ def main(args):
         plt.savefig(plot_path, dpi=150)
         print(f"\nTraining curves saved to: {plot_path}")
     
-    # Evaluate on test set
-    # if not args.skip_test:
-    #     print("\nEvaluating on test set...")
-        
-    #     # Load best model
-    #     checkpoint = load_checkpoint(save_path, model, device=device)
-    #     print(f"Loaded best model from epoch {checkpoint['epoch']}")
-        
-    #     # Evaluate
-    #     test_losses = evaluate_model(model, test_loader, loss_fn, device, config)
-        
-    #     print("\nTest Set Results:")
-    #     print(f"  Total Loss: {test_losses['total']:.6f}")
-    #     print(f"  Reconstruction Loss: {test_losses['recon']:.6f}")
-    #     print(f"  Prediction Loss: {test_losses['pred']:.6f}")
-    #     print(f"  Physics Loss: {test_losses['physics']:.6f}")
-    #     print(f"  Linearity Loss: {test_losses['linearity']:.6f}")
-        
-    #     # Save test results
-    #     import json
-    #     test_results_path = os.path.join(save_dir, 'test_results.json')
-    #     with open(test_results_path, 'w') as f:
-    #         json.dump({k: float(v) for k, v in test_losses.items()}, f, indent=2)
-    
     print("\nTraining completed successfully!")
 
 
